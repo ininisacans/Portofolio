@@ -36,9 +36,9 @@ const ProjectPage = () => {
       </div>
 
       <div className="w-full max-w-6xl px-4 mx-auto flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {listProyek.map((proyek) => (
-          <div key={proyek.id} className="group rounded-lg shadow hover:shadow-2xl bg-white transition-transform transform hover:-translate-y-2 active:translate-y-1 overflow-hidden w-[400px] md:w-[450px]">
+            <div key={proyek.id} className="group rounded-lg shadow hover:shadow-2xl bg-white transition-transform transform hover:-translate-y-2 active:translate-y-1 overflow-hidden w-full max-w-sm mx-auto">
             <div className="overflow-hidden">
               <Image
                 src={proyek.gambar}
