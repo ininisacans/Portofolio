@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import {
   FaInstagram,
   FaLinkedinIn,
@@ -8,6 +10,40 @@ import {
 } from "react-icons/fa";
 
 export default function ContactPage() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+        fetch("https://formsubmit.co/liaaazn09@gmail.com", {
+      method: "POST",
+      body: new FormData(form),
+    })
+      .then((res) => {
+        if (res.ok) {
+          form.reset();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thank you! Your message has been sent.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong. Please try again later.",
+          });
+        }
+      })
+           .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Network Error",
+          text: "Please check your connection.",
+        });
+      });
+  };
   return (
     <section id="contact" className="bg-[#eaf2ff] dark:bg-gray-600">
       <div className="scroll-mt-14 w-full rounded-t-[40px] py-12 px-4 min-h-screen bg-gray-100 dark:bg-gray-800 flex flex-col items-center pb-25">
@@ -20,15 +56,22 @@ export default function ContactPage() {
       </div>
 
       <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10">
-        <form className="w-full max-w-md border border-[#666] rounded-3xl p-4 flex flex-col gap-3">
-          <h3 className="font-semibold text-center text-gray-800 dark:text-gray-300 text-md">Send Me a Message</h3>
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-md border border-[#666] rounded-3xl p-4 flex flex-col gap-3"
+          >
+          <h3 className="font-semibold text-center text-gray-800 dark:text-gray-300 text-md">
+            Send Me a Message
+          </h3>
 
           <div className="flex flex-col text-left">
             <label className="text-[#2e2e38] dark:text-gray-300 mb-1">Name</label>
             <input
               type="text"
+              name="name"
+              required
               placeholder="example"
-              className="border border-[#666]  dark:text-gray-300 rounded-md p-2 focus:border-amber-300 focus:outline focus:outline-amber-300 dark:placeholder-gray-400"
+              className="border border-[#666] dark:text-gray-300 rounded-md p-2 focus:border-amber-300 focus:outline focus:outline-amber-300 dark:placeholder-gray-400"
             />
           </div>
 
@@ -36,17 +79,18 @@ export default function ContactPage() {
             <label className="text-[#2e2e38] dark:text-gray-300 mb-1">Email</label>
             <input
               type="email"
+              name="email"
+              required
               placeholder="example@gmail.com"
-              className="peer border dark:text-gray-300 border-[#666] rounded-md p-2 invalid:border-red-500 invalid:text-red-500 focus:border-amber-300 focus:outline focus:outline-amber-300 placeholder-gray-600 dark:placeholder-gray-400"
+              className="peer border dark:text-gray-300 border-[#666] rounded-md p-2 focus:border-amber-300 focus:outline focus:outline-amber-300 placeholder-gray-600 dark:placeholder-gray-400"
             />
-            <p className="invisible peer-invalid:visible text-red-600 text-sm">
-              Please provide a valid email address.
-            </p>
           </div>
 
           <div className="flex flex-col text-left">
             <label className="text-[#2e2e38] dark:text-gray-300 mb-1">Message</label>
             <textarea
+              name="message"
+              required
               placeholder="Your message here..."
               className="p-2 border border-[#666] rounded-md focus:border-amber-300 focus:outline focus:outline-amber-300 h-20 placeholder-gray-600 dark:placeholder-gray-400"
             />

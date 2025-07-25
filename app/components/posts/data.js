@@ -14,7 +14,7 @@ export const listProyek = [
     gambar: "/Proyek2.png",
     nama: "SILENT – Sign Language Translator",
     desk: "SILENT is a web app designed to translate Indonesian Sign Language into text in real-time using image or camera input. It aims to support inclusive communication for the deaf community.",
-    tools: ["HTML", "CSS", "JavaScript", "AOS", "Swiper"],
-    demo: "https://www.figma.com/proto/KZNbxCZuLhYuDWRj8yW2f4/Silent?node-id=80-123&t=cSzUyhiZRrIBwD5h-1"
+    tools: ["React", "TailwindCSS", "JavaScript", "Vite"],
+    demo: "https://silent-sign.vercel.app/"
   },
 ];

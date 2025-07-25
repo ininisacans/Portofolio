@@ -18,53 +18,67 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed w-full flex items-center justify-between top-0 z-50 p-4 transition-all duration-300 backdrop-blur-md ${
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
         isScrolled
           ? 'bg-white/10 dark:bg-gray-900/10 shadow-md'
           : 'bg-gray-100 dark:bg-gray-900'
       }`}
     >
-      {/* Kiri - Logo */}
-      <h1 className='ml-4 tracking-widest font-bold text-2xl text-black dark:text-white'>
-        Nisa
-      </h1>
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 className="tracking-widest font-bold text-2xl text-black dark:text-white">
+          Nisa
+        </h1>
 
-      {/* Tengah - Navbar di Desktop */}
-      <nav className="hidden md:block absolute left-1/2 -translate-x-1/2">
-        <ul className='flex flex-row font-bold gap-7 text-black dark:text-white'>
-          <li className='hover:font-extrabold'><Link href="#home">Home</Link></li>
-          <li className='hover:font-extrabold'><Link href="#about">About</Link></li>
-          <li className='hover:font-extrabold'><Link href="#projects">Projects</Link></li>
-          <li className='hover:font-extrabold'><Link href="#contact">Contact</Link></li>
-        </ul>
-      </nav>
+        <nav className="hidden md:block">
+          <ul className="flex gap-8 font-bold text-black dark:text-white">
+            <li className="hover:font-extrabold">
+              <Link href="#home">Home</Link>
+            </li>
+            <li className="hover:font-extrabold">
+              <Link href="#about">About</Link>
+            </li>
+            <li className="hover:font-extrabold">
+              <Link href="#projects">Projects</Link>
+            </li>
+            <li className="hover:font-extrabold">
+              <Link href="#contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
 
-      {/* Kanan - Mobile menu + Dark Mode */}
-      <div className="md:hidden flex items-center gap-3">
-        <button onClick={() => setIsOpen(!isOpen)} className="text-black dark:text-white">
-          <HiMiniBars3BottomLeft size={28} />
-        </button>
-        <DarkModeToggler />
+        <div className="flex items-center gap-4">
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-black dark:text-white"
+            >
+              <HiMiniBars3BottomLeft size={28} />
+            </button>
+          </div>
+          <DarkModeToggler />
+        </div>
       </div>
 
-      {/* Desktop - Dark Mode */}
-      <div className="hidden md:block">
-        <DarkModeToggler />
-      </div>
-
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="absolute top-full right-4 mt-2 bg-white dark:bg-gray-800 shadow-md rounded-md p-4 md:hidden">
-          <ul className="flex flex-col gap-3 text-black dark:text-white font-semibold">
-            <li><Link href="#home" onClick={() => setIsOpen(false)}>Home</Link></li>
-            <li><Link href="#about" onClick={() => setIsOpen(false)}>About</Link></li>
-            <li><Link href="#projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
-            <li><Link href="#contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
+        <div className="md:hidden px-4 pb-4">
+          <ul className="flex flex-col gap-3 bg-white dark:bg-gray-800 shadow-md rounded-md p-4 text-black dark:text-white font-semibold">
+            <li>
+              <Link href="#home" onClick={() => setIsOpen(false)}>Home</Link>
+            </li>
+            <li>
+              <Link href="#about" onClick={() => setIsOpen(false)}>About</Link>
+            </li>
+            <li>
+              <Link href="#projects" onClick={() => setIsOpen(false)}>Projects</Link>
+            </li>
+            <li>
+              <Link href="#contact" onClick={() => setIsOpen(false)}>Contact</Link>
+            </li>
           </ul>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 

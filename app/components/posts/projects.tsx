@@ -17,6 +17,9 @@ const techColors: Record<string, string> = {
   AOS: 'bg-gray-200 text-gray-800',
   Swiper: 'bg-indigo-100 text-indigo-800',
   'Lightbox Gallery': 'bg-rose-100 text-rose-800',
+  React: 'bg-cyan-100 text-cyan-700',
+  TailwindCSS: 'bg-sky-100 text-sky-700',
+  Vite: 'bg-violet-100 text-violet-700',
 };
 
 const ProjectPage = () => {
@@ -51,7 +54,6 @@ const ProjectPage = () => {
                 <h2 className="text-xl text-gray-800 font-semibold mb-2">{proyek.nama}</h2>
                 <p className="text-[#666] text-justify">{proyek.desk}</p>
 
-                {/* Technologies */}
                 <div className="mt-4 text-left">
                   <p className="text-sm text-[#959595] font-bold mb-2">Technologies Used:</p>
                   <div className="flex flex-wrap gap-2">
@@ -68,7 +70,6 @@ const ProjectPage = () => {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="mt-6 flex gap-3 flex-wrap">
                   {proyek.demo && (
                     <a
